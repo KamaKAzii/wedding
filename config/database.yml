@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: wedding_development
+  pool: 5
+  username: wedding
+  password: wedding
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: wedding_test
+  pool: 5
+  username: wedding
+  password: wedding
