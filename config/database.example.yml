@@ -4,4 +4,4 @@ production:
   database: wedding_production
   pool: 5
   username: wedding
-  password: wedding
+  password: penkey20
