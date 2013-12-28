@@ -43,6 +43,7 @@ namespace :deploy do
   task :everything, roles: :app do
     deploy.update
     deploy.restart
+    deploy.migrations
   end
 
 end
