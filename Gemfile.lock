@@ -170,6 +170,7 @@ DEPENDENCIES
   compass-rails (>= 1.1)
   debugger
   jquery-rails
+  nokogiri
   pg
   rails (= 4.0.2)
   rspec-rails
