@@ -8,11 +8,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'compass-rails', '>= 1.1'
 gem 'turbolinks'
+gem 'bcrypt-ruby'
+gem 'simple_form'
 
 group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "debugger"
+  gem "pry"
+  gem "factory_girl_rails"
 end
 
 gem 'unicorn'
