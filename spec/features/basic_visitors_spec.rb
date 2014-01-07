@@ -8,8 +8,9 @@ feature "Basic visitors" do
     page.should have_content("Welcome")
   end
 
-  # PT ID 63044014
-  scenario "As a Visitor I want to sign up for an account." do
+  # PT ID 63044014, 63123254
+  scenario "As a Visitor I want to sign up for an account.
+  As a Visitor I want to be signed in automatically when I sign up." do
     visit "/"
     click_link "Sign up"
     page.should have_content "Sign up" 
@@ -20,6 +21,7 @@ feature "Basic visitors" do
     fill_in "user_password_confirmation", with: "abcd1234"
     click_on "Sign up"
     page.should have_content "Successfully signed up user"
+    page.should have_content "Signed in as Harry Potter"
   end
 
   # PT ID 63253666
@@ -33,6 +35,18 @@ feature "Basic visitors" do
     click_on "Log in"
     page.should have_content "Successfully signed in"
     page.should have_content "Signed in as #{user.first_name} #{user.last_name}"
+  end
+
+  scenario "As a Visitor I want to be signed in automatically when I sign up." do
+    visit "/"
+    click_link "Sign up"
+    page.should have_content "Sign up" 
+    fill_in "First name", with: "Harry"
+    fill_in "Last name", with: "Potter"
+    fill_in "Email", with: "dharry.potter@gmail.com"
+    fill_in "user_password", with: "abcd1234"
+    fill_in "user_password_confirmation", with: "abcd1234"
+    click_on "Sign up"
   end
 
 end 
