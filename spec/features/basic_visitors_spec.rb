@@ -11,18 +11,12 @@ feature "Basic visitors" do
   # PT ID 63044014, 63123254
   scenario "As a Visitor I want to sign up for an account as a Consumer.
   As a Visitor I want to be signed in automatically when I sign up as a Consumer." do
-    visit "/"
-    click_link "Sign up"
-    page.should have_content "Sign up" 
-    fill_in "First name", with: "Harry"
-    fill_in "Last name", with: "Potter"
-    fill_in "Email", with: "dharry.potter@gmail.com"
-    fill_in "user_password", with: "abcd1234"
-    fill_in "user_password_confirmation", with: "abcd1234"
-    select "Consumer", from: "User type"
-    click_on "Sign up"
-    page.should have_content "Successfully signed up user"
-    page.should have_content "Signed in as Harry Potter"
+    consumer_sign_up
+  end
+
+  # PT ID 63365394
+  scenario "As a Visitor I want to sign up as a Service." do
+    service_sign_up
   end
 
   # PT ID 63253666
@@ -38,21 +32,11 @@ feature "Basic visitors" do
     page.should have_content "Signed in as #{user.first_name} #{user.last_name}"
   end
 
-  # PT ID 63365394
-  scenario "As a Visitor I want to sign up as a Service." do
-    user = create(:user)
-    visit "/"
-    click_link "Sign up"
-    page.should have_content "Sign up" 
-    fill_in "First name", with: "Harry"
-    fill_in "Last name", with: "Potter"
-    fill_in "Email", with: "dharry.potter@gmail.com"
-    fill_in "user_password", with: "abcd1234"
-    select "Service", from: "User type"
-    fill_in "user_password_confirmation", with: "abcd1234"
-    click_on "Sign up"
-    page.should have_content "Successfully signed up user"
-    page.should have_content "Signed in as Harry Potter"
+  # PT ID 63442058
+  scenario "As a User I want to be able to log out." do
+    consumer_sign_up
+    click_on "Log out"
+    page.should have_content  "Successfully signed out"
   end
 
 end 

@@ -11,6 +11,7 @@
 <% if current_user %>
   <div class="membership">
     Signed in as <%= current_user.full_name %>
+    <%= link_to "Log out", session_path("current"), method: :delete %>
   </div>
 <% end %>
 
