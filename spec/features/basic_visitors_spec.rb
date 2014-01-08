@@ -39,4 +39,10 @@ feature "Basic visitors" do
     page.should have_content  "Successfully signed out"
   end
 
+  # PT ID 63445262
+  scenario "As a User I want to see a dashboard with user details." do
+    consumer_sign_up
+    page.should have_content "Dashboard"
+  end
+
 end 
