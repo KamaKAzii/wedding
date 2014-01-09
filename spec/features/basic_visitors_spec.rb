@@ -45,4 +45,41 @@ feature "Basic visitors" do
     page.should have_content "Dashboard"
   end
 
+  # PT ID 63520586
+  scenario "As a Consumer I want to be able to view, add and edit my contact details from my dashboard." do
+    consumer_sign_up
+    page.should have_content "Dashboard"
+
+    # Add details
+    click_on "Add contact"
+    page.should have_content "Add contact"
+    fill_in "Street address 1", with: "Apt 30"
+    fill_in "Street address 2", with: "20 Old Street"
+    fill_in "Postcode", with: "0235"
+    fill_in "Phone number", with: "0123445631"
+    select "Male", from: "Gender"
+    click_on "Add contact"
+    page.should have_content "Successfully added contact details"
+    page.should have_content "Apt 30"
+    page.should have_content "20 Old Street"
+    page.should have_content "0235"
+    page.should have_content "0123445631"
+    page.should have_content "1"
+
+    # Edit details
+    click_on "Edit contact"
+    fill_in "Street address 1", with: "Apt 40"
+    fill_in "Street address 2", with: "20 New Lane"
+    fill_in "Postcode", with: "4323"
+    fill_in "Phone number", with: "9012345678"
+    select "Female", from: "Gender"
+    click_on "Save contact"
+    page.should have_content "Successfully edited contact details"
+    page.should have_content "Apt 40"
+    page.should have_content "20 New Lane"
+    page.should have_content "4323"
+    page.should have_content "9012345678"
+    page.should have_content "0"
+  end
+
 end 

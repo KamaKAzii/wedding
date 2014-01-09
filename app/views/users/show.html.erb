@@ -1,1 +1,48 @@
 <h1>Dashboard</h1>
+
+<h2>Contact details</h2>
+
+<% if @user.consumer_contact %>
+  <%= link_to "Edit contact", edit_user_consumer_contact_path(@user.id, @user.consumer_contact.id) %>
+  <ul>
+    <li>
+      <dl>
+        <dt>Street address 1</dt>
+        <dd><%= @user.consumer_contact.street_address_1 %></dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt>Street address 2</dt>
+        <dd><%= @user.consumer_contact.street_address_2 %></dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt>Postcode</dt>
+        <dd><%= @user.consumer_contact.postcode %></dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt>Postcode</dt>
+        <dd><%= @user.consumer_contact.postcode %></dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt>Phone number</dt>
+        <dd><%= @user.consumer_contact.phone_number %></dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt>Gender</dt>
+        <dd><%= @user.consumer_contact.gender %></dd>
+      </dl>
+    </li>
+  </ul>
+<% else %>
+  <p>Please add your contact details</p>
+  <%= link_to "Add contact details", new_user_consumer_contact_path(@user.id) %>
+<% end %>

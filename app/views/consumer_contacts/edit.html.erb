@@ -1,0 +1,10 @@
+<h1>Edit contact</h1>
+
+<%= simple_form_for [@user, @consumer_contact] do |f| %>
+  <%= f.input :street_address_1 %>
+  <%= f.input :street_address_2 %>
+  <%= f.input :postcode %>
+  <%= f.input :phone_number %>
+  <%= f.input :gender, collection: [["Male", 1], ["Female", 2]] %>
+  <%= f.submit "Save contact" %>
+<% end %>
