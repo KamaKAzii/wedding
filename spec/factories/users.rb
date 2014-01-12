@@ -5,6 +5,7 @@ FactoryGirl.define do
     email "harry.potter@magic.com"
     password "abcd1234"
     password_confirmation "abcd1234"
+    user_type 1
 
     consumer_contact
   end

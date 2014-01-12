@@ -4,6 +4,7 @@ Wedding::Application.routes.draw do
 
   resources :users do
     resources :consumer_contacts
+    resources :service_contacts
   end
 
   root 'home#index'

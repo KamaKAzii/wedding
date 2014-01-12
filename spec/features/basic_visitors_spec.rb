@@ -82,4 +82,42 @@ feature "Basic visitors" do
     page.should have_content "0"
   end
 
+  # PT ID 63581632
+  scenario "As a Service I want to be able to view, add and edit my contact details from my dashboard." do
+    service_sign_up
+    page.should have_content "Dashboard"
+
+    # Add details
+    click_on "Add contact"
+    page.should have_content "Add contact"
+    fill_in "Business name", with: "Potter Pottery"
+    fill_in "Street address 1", with: "Suite 1"
+    fill_in "Street address 2", with: "35 Old Street"
+    fill_in "Postcode", with: "1324"
+    fill_in "Landline number", with: "0123445631"
+    fill_in "Mobile number", with: "0412334123"
+    fill_in "Fax number", with: "0311234566"
+    fill_in "Website", with: "www.potterpottery.com"
+    fill_in "Email", with: "mail@potterpottery.com"
+    click_on "Add contact"
+    page.should have_content "Successfully added contact details"
+    page.should have_content "Potter Pottery"
+    page.should have_content "35 Old Street"
+    page.should have_content "1324"
+    page.should have_content "0123445631"
+    page.should have_content "0412334123"
+    page.should have_content "0311234566"
+    page.should have_content "www.potterpottery.com"
+    page.should have_content "mail@potterpottery.com"
+
+    # Edit details
+    click_on "Edit contact"
+    fill_in "Street address 1", with: "Suite 4"
+    fill_in "Email", with: "contact@potterpottery.com"
+    click_on "Save contact"
+    page.should have_content "Successfully edited contact details"
+    page.should have_content "Suite 4"
+    page.should have_content "contact@potterpottery.com"
+  end 
+
 end 

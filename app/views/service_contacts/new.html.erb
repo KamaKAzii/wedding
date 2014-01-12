@@ -1,0 +1,14 @@
+<h1>Add contact</h1>
+
+<%= simple_form_for [@user, @service_contact] do |f| %>
+  <%= f.input :business_name %>
+  <%= f.input :street_address_1 %>
+  <%= f.input :street_address_2 %>
+  <%= f.input :postcode %>
+  <%= f.input :landline_number %>
+  <%= f.input :mobile_number %>
+  <%= f.input :fax_number %>
+  <%= f.input :website %>
+  <%= f.input :email %>
+  <%= f.submit "Add contact" %>
+<% end %>
