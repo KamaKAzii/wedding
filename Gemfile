@@ -15,7 +15,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "debugger"
-  gem "pry"
+  gem "jazz_hands"
   gem "factory_girl_rails"
 end
 
