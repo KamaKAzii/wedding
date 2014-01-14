@@ -1,0 +1,6 @@
+<h1>Add marriage</h1>
+
+<%= simple_form_for [@user, @marriage] do |f| %>
+  <%= f.input :title %>
+  <%= f.submit "Add marriage" %>
+<% end %>

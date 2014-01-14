@@ -22,12 +22,7 @@ feature "Basic visitors" do
   # PT ID 63253666
   scenario "As a User I want to be able to sign in and keep that login for a session." do
     user = create(:user)
-    visit "/"
-    click_link "Log in"
-    page.should have_content "Log in"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "abcd1234"
-    click_on "Log in"
+    login_user(user)
     page.should have_content "Successfully signed in"
     page.should have_content "Signed in as #{user.first_name} #{user.last_name}"
   end

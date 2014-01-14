@@ -27,3 +27,12 @@ def service_sign_up
   page.should have_content "Successfully signed up user"
   page.should have_content "Signed in as Harry Potter"
 end
+
+def login_user(user)
+    visit "/"
+    click_link "Log in"
+    page.should have_content "Log in"
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_on "Log in"
+end
