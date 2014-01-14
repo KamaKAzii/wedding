@@ -14,6 +14,7 @@
   <%= link_to "Add marriage", new_user_marriage_path(@user.id) %>
   <% if @user.marriage %>
     <%= render "marriages/show", marriage: @user.marriage %>
+    <%= link_to "Edit marriage", edit_user_marriage_path(@user.id, @user.marriage.id) %>
   <% end %>
 <% end %>
 

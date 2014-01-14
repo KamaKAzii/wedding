@@ -3,6 +3,14 @@
     <dl>
       <dt>Title</dt>
       <dd><%= marriage.title %></dd>
+      <dt>Couple</dt>
+      <dd>
+        <% marriage.couple.users.each do |couple_user| %>
+          <%= couple_user.first_name + " " + couple_user.last_name %>
+        <% end %>
+
+      </dd>
+
     </dl>
   </li>
 </ul>

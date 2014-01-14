@@ -1,0 +1,9 @@
+<h1>Edit marriage</h1>
+
+<%= simple_form_for [@user, @marriage] do |f| %>
+  <%= f.input :title %>
+  <%= f.simple_fields_for :couple do |c| %>
+    <%= c.association :users, as: :select, collection: User.all, label_method: :first_name, value_method: :id %>
+  <% end %>
+  <%= f.submit "Save marriage" %>
+<% end %>

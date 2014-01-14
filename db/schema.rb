@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114205622) do
+ActiveRecord::Schema.define(version: 20140115110413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20140114205622) do
   end
 
   add_index "consumer_contacts", ["user_id"], name: "index_consumer_contacts_on_user_id", using: :btree
+
+  create_table "couples", force: true do |t|
+    t.integer  "marriage_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "couples", ["marriage_id"], name: "index_couples_on_marriage_id", using: :btree
 
   create_table "marriages", force: true do |t|
     t.string   "title"
@@ -63,6 +71,9 @@ ActiveRecord::Schema.define(version: 20140114205622) do
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "couple_id"
   end
+
+  add_index "users", ["couple_id"], name: "index_users_on_couple_id", using: :btree
 
 end
