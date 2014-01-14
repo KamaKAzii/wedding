@@ -115,4 +115,21 @@ feature "Basic visitors" do
     page.should have_content "contact@potterpottery.com"
   end 
 
+  # PT ID 63783614
+  scenario "As a Visitor I only want to be able to sign up if my email address is unique." do
+    user = create(:user)
+    visit "/"
+    click_link "Sign up"
+    page.should have_content "Sign up" 
+    fill_in "First name", with: "Harry"
+    fill_in "Last name", with: "Potter"
+    fill_in "Email", with: user.email
+    fill_in "user_password", with: "abcd1234"
+    fill_in "user_password_confirmation", with: "abcd1234"
+    select "Consumer", from: "User type"
+    click_on "Sign up"
+    page.should have_content "Sign up" 
+    page.should have_content "Please ender a unique email"
+  end
+
 end 
