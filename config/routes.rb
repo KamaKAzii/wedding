@@ -11,6 +11,7 @@ Wedding::Application.routes.draw do
 
   resources :marriages do
     resources :events
+    resources :jobs
   end
 
   root 'home#index'

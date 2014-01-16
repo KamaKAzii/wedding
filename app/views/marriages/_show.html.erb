@@ -32,4 +32,20 @@
       </dl>
     </li>
   <% end %>
+
+  <% if marriage.jobs.any? %>
+    <li>
+      <dl>
+        <dt>Jobs</dt>
+        <dd>
+          <% marriage.jobs.each do |e| %>
+            <%= e.title %>
+            <%= e.application_due_date %>
+            <%= e.description %>
+          <% end %>
+        </dd>
+      </dl>
+    </li>
+    
+  <% end %>
 </ul>

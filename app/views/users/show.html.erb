@@ -13,12 +13,15 @@
     <%= link_to "Add contact details", new_user_consumer_contact_path(@user.id) %>
   <% end %>
 
-  <%= link_to "Add marriage", new_user_marriage_path(@user.id) %>
   <% if @user.marriage %>
     <%= render "marriages/show", marriage: @user.marriage %>
     <%= link_to "Edit marriage", edit_user_marriage_path(@user.id, @user.marriage.id) %>
     <%= link_to "Add event", new_marriage_event_path(@user.marriage.id) %>
+    <%= link_to "Add job", new_marriage_job_path(@user.marriage.id) %>
   <% end %>
+  <%= link_to "Add marriage", new_user_marriage_path(@user.id) %>
+
+
 <% end %>
 
 

@@ -51,9 +51,9 @@ def add_event
   fill_in "Title", with: "Ceremony"
   fill_in "Street address 1", with: "1 Church Street"
   fill_in "Postcode", with: "0123"
-  select Time.now.strftime("%e"), from: "event_date_3i" # day
-  select Time.now.strftime("%B"), from: "event_date_2i" # month
   select Time.now.strftime("%Y"), from: "event_date_1i" # year
+  select Time.now.strftime("%B"), from: "event_date_2i" # month
+  select Time.now.strftime("%e"), from: "event_date_3i" # day
   click_on "Add event"
   page.should have_content "Successfully added event"
   page.should have_content "Ceremony"
