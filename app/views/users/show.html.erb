@@ -2,6 +2,8 @@
 
 <h2>Contact details</h2>
 
+
+
 <% if @user.user_type == 0 %>
   <% if @user.consumer_contact %>
     <%= link_to "Edit contact", edit_user_consumer_contact_path(@user.id, @user.consumer_contact.id) %>
@@ -19,6 +21,8 @@
   <% end %>
 <% end %>
 
+
+
 <% if @user.user_type == 1 %>
   <% if @user.service_contact %>
     <%= link_to "Edit contact", edit_user_service_contact_path(@user.id, @user.service_contact.id) %>
@@ -27,4 +31,8 @@
     <p>Please add your contact details</p>
     <%= link_to "Add contact details", new_user_service_contact_path(@user.id) %>
   <% end %>
+
+  <%= render "posts/service_show", user: @user %>
+  <%= link_to "Add post", new_user_post_path(@user) %>
+ 
 <% end %>

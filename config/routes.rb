@@ -6,6 +6,7 @@ Wedding::Application.routes.draw do
     resources :consumer_contacts
     resources :service_contacts
     resources :marriages
+    resources :posts
   end
 
   resources :marriages do
