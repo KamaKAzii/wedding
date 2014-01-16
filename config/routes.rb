@@ -8,6 +8,10 @@ Wedding::Application.routes.draw do
     resources :marriages
   end
 
+  resources :marriages do
+    resources :events
+  end
+
   root 'home#index'
 
 end

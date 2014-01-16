@@ -3,14 +3,33 @@
     <dl>
       <dt>Title</dt>
       <dd><%= marriage.title %></dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
       <dt>Couple</dt>
       <dd>
         <% marriage.couple.users.each do |couple_user| %>
           <%= couple_user.first_name + " " + couple_user.last_name %>
         <% end %>
-
       </dd>
-
     </dl>
   </li>
+  
+  <% if marriage.events.any? %>
+    <li>
+      <dl>
+        <dt>Events</dt>
+        <dd>
+          <% marriage.events.each do |e| %>
+            <%= e.title %>
+            <%= e.date %>
+            <%= e.street_address_1 %>
+            <%= e.street_address_2 %>
+            <%= e.postcode %>
+          <% end %>
+        </dd>
+      </dl>
+    </li>
+  <% end %>
 </ul>

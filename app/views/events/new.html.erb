@@ -1,0 +1,13 @@
+<h1>Add event</h1>
+
+<%= simple_form_for [@marriage, @event] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :date, as: :date,
+    order: [:day, :month, :year],
+    start_year: Time.now.year,
+    end_year: Time.now.year + 10 %>
+  <%= f.input :street_address_1 %>
+  <%= f.input :street_address_2 %>
+  <%= f.input :postcode %>
+  <%= f.submit "Add event" %>
+<% end %>
