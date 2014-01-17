@@ -59,3 +59,16 @@ def add_event
   page.should have_content "Ceremony"
   page.should have_content "1 Church Street"
 end
+
+def add_post
+  click_on "Add post"
+  page.should have_content "Add post"
+  fill_in "Title", with: "First service blog post"
+  fill_in "Body", with: "This is the body of the first post.
+    What a great day for weddings.
+    Isn't it a lovely day. Derp."
+  click_on "Add post"
+  page.should have_content "Successfully added post"
+  page.should have_content "First service blog post"
+  page.should have_content "This is the body of the first post."
+end

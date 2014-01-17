@@ -37,5 +37,9 @@
 
   <%= render "posts/service_show", user: @user %>
   <%= link_to "Add post", new_user_post_path(@user) %>
- 
+
+  <% if @user.photos.any? %>
+    <%= render "photos/service_show", user: @user %>
+  <% end %>
+  <%= link_to "Add photo", new_user_photo_path(@user.id) %>
 <% end %>

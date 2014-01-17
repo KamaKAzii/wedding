@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :service_contact
   has_one :marriage
   has_many :posts
+  has_many :photos
   belongs_to :couple
 
   validates_uniqueness_of :email, message: "Please ender a unique email"

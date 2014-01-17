@@ -10,6 +10,7 @@ gem 'compass-rails', '>= 1.1'
 gem 'turbolinks'
 gem 'bcrypt-ruby'
 gem 'simple_form'
+gem 'paperclip'
 
 group :development, :test do
   gem "rspec-rails"

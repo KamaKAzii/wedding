@@ -1,0 +1,9 @@
+<ul>
+  <% user.photos.each do |p| %>
+    <li class="photo">
+      <%= image_tag p.image.url %>
+      <%= p.title %>
+      <%= p.description %>
+    </li>
+  <% end %>
+</ul>
