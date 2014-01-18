@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You have been invited by <%= @user.first_name %></h1>
+    <p>Please click <%= link_to "here", new_user_url %> to join</p>
+  </body>
+</html>

@@ -20,8 +20,8 @@ feature "Basic consumers" do
     login_user(user)
     add_marriage
     click_on "Edit marriage" # TODO: Click the link inside the marriage UL's first LI
-    select user.first_name, from: "Users"
-    select second_user.first_name, from: "Users"
+    select user.email, from: "Users"
+    select second_user.email, from: "Users"
     click_on "Save marriage"
     page.should have_content "Successfully edited marriage"
     page.should have_content user.first_name
@@ -54,6 +54,17 @@ feature "Basic consumers" do
     click_on "Add job"
     page.should have_content "Job successfully added"
     page.should have_content "Photographer needed"
+  end
+
+  # PT ID 63948792
+  scenario "As a Consumer I want to be able to send people an Invite via email so they too can be Consumers." do
+    user = create(:user, user_type: 0)
+    login_user(user)
+    click_on("Invite via email")
+    page.should have_content("Invite via email")
+    fill_in "Email", with: "potentialpartner@blergh.com"
+    click_on "Invite"
+    page.should have_content "potentialpartner@blergh.com has been invited via email"
   end
 
 end

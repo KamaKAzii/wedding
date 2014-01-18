@@ -8,6 +8,7 @@ Wedding::Application.routes.draw do
     resources :marriages
     resources :posts
     resources :photos
+    resources :invites
   end
 
   resources :marriages do
