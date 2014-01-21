@@ -20,8 +20,8 @@ feature "Basic consumers" do
     login_user(user)
     add_marriage
     click_on "Edit marriage" # TODO: Click the link inside the marriage UL's first LI
-    select user.email, from: "Users"
-    select second_user.email, from: "Users"
+    select user.first_name, from: "Users"
+    select second_user.first_name, from: "Users"
     click_on "Save marriage"
     page.should have_content "Successfully edited marriage"
     page.should have_content user.first_name
@@ -48,9 +48,9 @@ feature "Basic consumers" do
       Must be vintage and hipster.
       Needs at least 10 billion years of experience. Herp."
     app_due_date = Time.now + (2 * 7 * 24 * 60 * 60) # 2 weeks
-    select app_due_date.strftime("%Y"), from: "job_application_due_date_1i" # year
-    select app_due_date.strftime("%B"), from: "job_application_due_date_2i" # month
-    select app_due_date.strftime("%e"), from: "job_application_due_date_3i" # day
+    select app_due_date.strftime("%Y").strip, from: "job_application_due_date_1i" # year
+    select app_due_date.strftime("%B").strip, from: "job_application_due_date_2i" # month
+    select app_due_date.strftime("%e").strip, from: "job_application_due_date_3i" # day
     click_on "Add job"
     page.should have_content "Job successfully added"
     page.should have_content "Photographer needed"
