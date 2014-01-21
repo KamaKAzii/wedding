@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_many :invites
   belongs_to :couple
 
-  validates_uniqueness_of :email, message: "Please ender a unique email"
+  validates :email, 
+    presence: { message: "This can't be blank" },
+    uniqueness: { message: "That email has been taken" },
 
   def full_name
     first_name + " " + last_name
