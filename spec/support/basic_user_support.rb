@@ -72,3 +72,19 @@ def add_post
   page.should have_content "First service blog post"
   page.should have_content "This is the body of the first post."
 end
+
+def add_job
+  click_on "Add job"
+  page.should have_content "Add job"
+  fill_in "Title", with: "Photographer needed"
+  fill_in "Description", with: "Need a super 1337 boss photographer.
+    Must be vintage and hipster.
+    Needs at least 10 billion years of experience. Herp."
+  app_due_date = Time.now + (2 * 7 * 24 * 60 * 60) # 2 weeks
+  select app_due_date.strftime("%Y").strip, from: "job_application_due_date_1i" # year
+  select app_due_date.strftime("%B").strip, from: "job_application_due_date_2i" # month
+  select app_due_date.strftime("%e").strip, from: "job_application_due_date_3i" # day
+  click_on "Add job"
+  page.should have_content "Job successfully added"
+  page.should have_content "Photographer needed"
+end

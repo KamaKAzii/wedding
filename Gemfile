@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'bcrypt-ruby'
 gem 'simple_form'
 gem 'paperclip'
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem "rspec-rails"

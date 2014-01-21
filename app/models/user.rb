@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates :email, 
     presence: { message: "This can't be blank" },
-    uniqueness: { message: "That email has been taken" },
+    uniqueness: { message: "That email has been taken" }
 
   def full_name
     first_name + " " + last_name

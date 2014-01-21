@@ -38,10 +38,12 @@
       <dl>
         <dt>Jobs</dt>
         <dd>
-          <% marriage.jobs.each do |e| %>
-            <%= e.title %>
-            <%= e.application_due_date %>
-            <%= e.description %>
+          <% marriage.jobs.each do |j| %>
+            <%= j.title %>
+            <%= j.application_due_date %>
+            <%= j.description %>
+            <%= j.tag_list.join", " %>
+            <%= link_to "Edit job", edit_marriage_job_path(marriage.id, j.id) %>
           <% end %>
         </dd>
       </dl>

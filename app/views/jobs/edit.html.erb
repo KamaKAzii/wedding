@@ -1,0 +1,11 @@
+<h1>Edit job</h1>
+
+<%= simple_form_for [@marriage, @job] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :application_due_date, as: :date,
+    start_year: Time.now.year,
+    end_year: Time.now.year + 2 %>
+  <%= f.input :description %>
+  <%= f.input :tag_list, label: "Tags" %>
+  <%= f.submit "Save job" %>
+<% end %>

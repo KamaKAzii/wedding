@@ -21,6 +21,26 @@ class JobsController < ApplicationController
     end
   end
 
+  def edit
+    @marriage = Marriage.find(params[:marriage_id])
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    @marriage = Marriage.find(params[:marriage_id])
+    @job = Job.find(params[:id])
+    if @job.update(job_params)
+      flash.notice = "Successfully edited job"
+      if current_user
+        redirect_to user_path(current_user.id)
+      else
+        redirect_to root_path
+      end
+    else
+      render "edit"
+    end
+  end
+
   private
 
   def job_params
@@ -29,6 +49,7 @@ class JobsController < ApplicationController
       .permit(
         :title,
         :description,
+        :tag_list,
         "date(3i)",
         "date(2i)",
         "date(1i)")

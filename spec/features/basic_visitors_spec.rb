@@ -129,7 +129,7 @@ feature "Basic visitors" do
     select "Consumer", from: "User type"
     click_on "Sign up"
     page.should have_content "Sign up" 
-    page.should have_content "Please ender a unique email"
+    page.should have_content "That email has been taken"
   end
 
 end 

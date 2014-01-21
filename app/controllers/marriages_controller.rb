@@ -29,7 +29,7 @@ class MarriagesController < ApplicationController
       flash.notice = "Successfully edited marriage"
       redirect_to user_path(params[:user_id])
     else
-      render "new"
+      render "edit"
     end
   end
   
