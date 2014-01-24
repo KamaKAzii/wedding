@@ -1,5 +1,4 @@
-<h1>Dashboard</h1>
-
+<h1>Dashboard</h1> 
 <h2>Contact details</h2>
 
 
@@ -42,4 +41,10 @@
     <%= render "photos/service_show", user: @user %>
   <% end %>
   <%= link_to "Add photo", new_user_photo_path(@user.id) %>
+
+  <% if @user.appointments.any? %>
+    <%= render "appointments/service_show", user: @user %>
+  <% end %>
+  <%= link_to "Add appointment", new_user_appointment_path(@user.id) %>
+
 <% end %>

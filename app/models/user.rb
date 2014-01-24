@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :photos
   has_many :invites
+  has_many :appointments
   belongs_to :couple
 
   validates :email, 

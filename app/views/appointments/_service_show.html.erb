@@ -1,0 +1,4 @@
+<% user.appointments.each do |a| %>
+  <%= a.title %>
+  <%= a.date.strftime("%e %B %Y") %>
+<% end %>

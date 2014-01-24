@@ -19,6 +19,7 @@ group :development, :test do
   gem "debugger"
   gem "jazz_hands"
   gem "factory_girl_rails"
+  gem "rails-erd"
 end
 
 gem 'unicorn'
