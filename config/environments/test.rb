@@ -37,4 +37,7 @@ Wedding::Application.configure do
 
   # Paperclip
   Paperclip.options[:command_path] = "/usr/bin/"
+
+  # Supress locales deprication notification
+  I18n.enforce_available_locales = false
 end

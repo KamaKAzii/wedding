@@ -37,6 +37,12 @@ def login_user(user)
   click_on "Log in"
 end
 
+def logout_user
+  visit "/"
+  click_link "Log out"
+  page.should have_content "Successfully logged out"
+end
+
 def add_marriage
   click_on "Add marriage"
   fill_in "Title", with: "Super cool marriage"
@@ -87,4 +93,13 @@ def add_job
   click_on "Add job"
   page.should have_content "Job successfully added"
   page.should have_content "Photographer needed"
+end
+
+def edit_job(tags)
+  click_on "Edit job"
+  page.should have_content "Edit job"
+  fill_in "Tags", with: tags
+  click_on "Save job"
+  page.should have_content "Successfully edited job"
+  page.should have_content tags
 end

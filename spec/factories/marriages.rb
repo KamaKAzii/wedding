@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :marriage do
     title "MyString"
-    user nil
+    user
   end
 end

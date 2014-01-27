@@ -47,4 +47,6 @@
   <% end %>
   <%= link_to "Add appointment", new_user_appointment_path(@user.id) %>
 
+  <%= render "jobs/service_search", user: @user %>
+
 <% end %>

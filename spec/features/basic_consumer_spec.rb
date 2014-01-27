@@ -61,12 +61,7 @@ feature "Basic consumers" do
     login_user(user)
     add_marriage
     add_job
-    click_on "Edit job"
-    page.should have_content "Edit job"
-    fill_in "Tags", with: "Vintage, Blue, White, Pink, Nautical"
-    click_on "Save job"
-    page.should have_content "Successfully edited job"
-    page.should have_content "Vintage, Blue, White, Pink, Nautical"
+    edit_job("Attire, Dress")
   end
 
 end

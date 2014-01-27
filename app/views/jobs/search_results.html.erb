@@ -1,0 +1,16 @@
+<h1>Job search results</h1>
+
+<% if @jobs.any? %>
+  <ul>
+    <% @jobs.each do |j| %>
+      <li>
+        <%= j.title %>
+        <%= j.description %>
+        <%= j.tag_list.join ", " %>
+        <%= j.marriage.user.first_name %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There were no results</p>
+<% end %>

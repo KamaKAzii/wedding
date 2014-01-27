@@ -17,6 +17,8 @@ Wedding::Application.routes.draw do
     resources :jobs
   end
 
+  get "job_tag_search", to: "jobs#tag_search"
+
   root 'home#index'
 
 end

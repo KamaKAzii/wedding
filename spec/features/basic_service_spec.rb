@@ -39,4 +39,26 @@ feature "Basic services" do
     page.should have_content date.strftime("%e %B %Y")
   end
 
+  # PT ID 64217922
+  scenario "As a Service I want to be able to search for Jobs by Tag." do
+    s_user = create(:user, email: "service@test.com")
+    c_user = create(:user, email: "consumer@test.com", user_type: 0)
+
+    visit "/"
+    login_user(c_user)
+    add_marriage
+    add_job
+    tags = "Flowers, Other"
+    edit_job(tags)
+    logout_user
+    visit "/"
+    login_user(s_user)
+    page.should have_content "Search Jobs by Tag"
+    fill_in "Tag search", with: tags
+    click_on "Search"
+    page.should have_content "Job search results"
+    page.should have_content c_user.first_name
+    page.should have_content tags
+  end
+
 end
