@@ -1,0 +1,9 @@
+<h1>Edit appointment</h1>
+
+<%= simple_form_for [@user, @appointment] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :date, as: :date,
+    start_year: Time.now.year,
+    end_year: Time.now.year + 2 %>
+  <%= f.submit "Save appointment" %>
+<% end %>

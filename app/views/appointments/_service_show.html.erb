@@ -1,4 +1,5 @@
 <% user.appointments.each do |a| %>
   <%= a.title %>
   <%= a.date.strftime("%e %B %Y") %>
+  <%= link_to "Edit appointment", edit_user_appointment_path(user.id, a.id) %>
 <% end %>

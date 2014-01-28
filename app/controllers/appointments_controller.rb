@@ -17,6 +17,22 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:user_id])
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @appointment = Appointment.find(params[:id])
+    if @appointment.update(appointment_params)
+      flash.notice = "Successfully edited appointment" 
+      redirect_to user_path(params[:user_id])
+    else
+      render "edit"
+    end
+  end
+
   private
 
   def appointment_params
