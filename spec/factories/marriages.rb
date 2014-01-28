@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :marriage do
-    title "MyString"
+    title "Test marriage"
     user
   end
 end

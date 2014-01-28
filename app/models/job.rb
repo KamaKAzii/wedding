@@ -8,5 +8,4 @@ class Job < ActiveRecord::Base
     Job.tagged_with(terms, any: true)
   end
 
-
 end

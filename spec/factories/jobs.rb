@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :job do
-    title "MyString"
-    description "MyString"
+    title "Sample job"
+    description "I think this is a sample job"
     application_due_date "2014-01-17 08:17:19"
-    marriage nil
+    marriage
   end
 end
