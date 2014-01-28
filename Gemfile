@@ -12,6 +12,7 @@ gem 'bcrypt-ruby'
 gem 'simple_form'
 gem 'paperclip'
 gem 'acts-as-taggable-on'
+gem 'pg_search'
 
 group :development, :test do
   gem "rspec-rails"

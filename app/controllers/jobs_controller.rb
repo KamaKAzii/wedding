@@ -42,10 +42,16 @@ class JobsController < ApplicationController
   end
 
   def tag_search
-    terms_array = tag_search_params[:terms]
+    terms_array = tag_search_params[:tag_terms]
       .split(",")
       .collect(&:strip)
     @jobs = Job.tag_search(terms_array)
+    render "search_results"
+  end
+  
+  def keyword_search
+    terms = keyword_search_params[:keyword_terms]
+    @jobs = Job.keyword_search(terms)
     render "search_results"
   end
 
@@ -67,7 +73,14 @@ class JobsController < ApplicationController
       params
         .require(:job)
         .permit(
-          :terms)
+          :tag_terms)
+  end
+
+  def keyword_search_params
+      params
+        .require(:job)
+        .permit(
+          :keyword_terms)
   end
 
 end

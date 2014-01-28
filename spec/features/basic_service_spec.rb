@@ -54,8 +54,30 @@ feature "Basic services" do
     visit "/"
     login_user(s_user)
     page.should have_content "Search Jobs by Tag"
-    fill_in "Tag search", with: tags
-    click_on "Search"
+    fill_in "job_tag_terms", with: tags
+    click_on "Tag search"
+    page.should have_content "Job search results"
+    page.should have_content c_user.first_name
+    page.should have_content tags
+  end
+
+  # PT ID 64217938
+  scenario "As a Service I want to be able to search for Jobs as a full text search." do
+    s_user = create(:user, email: "service@test.com")
+    c_user = create(:user, email: "consumer@test.com", user_type: 0)
+
+    visit "/"
+    login_user(c_user)
+    add_marriage
+    add_job
+    tags = "Flowers, Other"
+    edit_job(tags)
+    logout_user
+    visit "/"
+    login_user(s_user)
+    page.should have_content "Search Jobs by keyword"
+    fill_in "job_keyword_terms", with: "Photographer"
+    click_on "Keyword search"
     page.should have_content "Job search results"
     page.should have_content c_user.first_name
     page.should have_content tags

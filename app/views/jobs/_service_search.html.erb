@@ -1,6 +1,11 @@
 <h2>Search Jobs by Tag</h2>
-
 <%= simple_form_for :job, url: job_tag_search_path, method: :get do |f| %>
-  <%= f.input :terms, label: "Tag search" %>
-  <%= f.submit "Search" %>
+  <%= f.input :tag_terms, label: "Tags" %>
+  <%= f.submit "Tag search" %>
+<% end %>
+
+<h2>Search Jobs by keyword</h2>
+<%= simple_form_for :job, url: job_keyword_search_path, method: :get do |f| %>
+  <%= f.input :keyword_terms, label: "Keywords" %>
+  <%= f.submit "Keyword search" %>
 <% end %>
