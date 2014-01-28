@@ -23,7 +23,7 @@ feature "Basic visitors" do
   scenario "As a User I want to be able to sign in and keep that login for a session." do
     user = create(:user)
     login_user(user)
-    page.should have_content "Successfully signed in"
+    page.should have_content "Successfully logged in"
     page.should have_content "Signed in as #{user.first_name} #{user.last_name}"
   end
 
@@ -31,7 +31,7 @@ feature "Basic visitors" do
   scenario "As a User I want to be able to log out." do
     consumer_sign_up
     click_on "Log out"
-    page.should have_content  "Successfully signed out"
+    page.should have_content  "Successfully logged out"
   end
 
   # PT ID 63445262
