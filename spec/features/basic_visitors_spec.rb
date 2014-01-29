@@ -14,9 +14,9 @@ feature "Basic visitors" do
     consumer_sign_up
   end
 
-  # PT ID 63365394
+  # PT ID 63365394, 64721002
   scenario "As a Visitor I want to sign up as a Service." do
-    service_sign_up
+    service_sign_up "Gold"
   end
 
   # PT ID 63253666
@@ -79,7 +79,7 @@ feature "Basic visitors" do
 
   # PT ID 63581632
   scenario "As a Service I want to be able to view, add and edit my contact details from my dashboard." do
-    service_sign_up
+    service_sign_up "Gold"
     page.should have_content "Dashboard"
 
     # Add details

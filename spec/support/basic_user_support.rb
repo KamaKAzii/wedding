@@ -13,7 +13,7 @@ def consumer_sign_up
   page.should have_content "Signed in as Harry Potter"
 end
 
-def service_sign_up
+def service_sign_up(plan)
   visit "/"
   click_link "Sign up"
   page.should have_content "Sign up" 
@@ -22,6 +22,7 @@ def service_sign_up
   fill_in "Email", with: "dharry.potter@gmail.com"
   fill_in "user_password", with: "abcd1234"
   select "Service", from: "User type"
+  select plan, from: "Plan"
   fill_in "user_password_confirmation", with: "abcd1234"
   click_on "Sign up"
   page.should have_content "Successfully signed up user"

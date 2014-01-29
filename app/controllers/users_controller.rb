@@ -29,6 +29,7 @@ class UsersController < ApplicationController
         :first_name,
         :last_name,
         :user_type,
+        :plan,
         :password,
         :password_confirmation)
   end

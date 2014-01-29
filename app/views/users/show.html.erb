@@ -26,6 +26,7 @@
 
 
 <% if @user.user_type == 1 %>
+  <p>You are a @{@user.plan}</p>
   <% if @user.service_contact %>
     <%= link_to "Edit contact", edit_user_service_contact_path(@user.id, @user.service_contact.id) %>
     <%= render "shared/service_contact", service_contact: @user.service_contact %>
