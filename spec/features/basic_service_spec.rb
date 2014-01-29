@@ -59,7 +59,7 @@ feature "Basic services" do
     add_marriage
     add_job
     tags = "Flowers, Other"
-    edit_job(tags)
+    edit_job tags: tags
     logout_user
     visit "/"
     login_user(s_user)
@@ -81,7 +81,7 @@ feature "Basic services" do
     add_marriage
     add_job
     tags = "Flowers, Other"
-    edit_job(tags)
+    edit_job tags: tags
     logout_user
     visit "/"
     login_user(s_user)
