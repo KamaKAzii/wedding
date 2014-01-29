@@ -4,6 +4,12 @@
   <%= f.submit "Tag search" %>
 <% end %>
 
+<h2>Search Jobs by Theme</h2>
+<%= simple_form_for :job, url: job_theme_search_path, method: :get do |f| %>
+  <%= f.input :theme_terms, label: "Theme" %>
+  <%= f.submit "Theme search" %>
+<% end %>
+
 <h2>Search Jobs by keyword</h2>
 <%= simple_form_for :job, url: job_keyword_search_path, method: :get do |f| %>
   <%= f.input :keyword_terms, label: "Keywords" %>

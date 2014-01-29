@@ -93,4 +93,27 @@ feature "Basic services" do
     page.should have_content tags
   end
 
+  # PT ID 64720928
+  scenario "As a Service I want to search by Theme and be returned a list of relevant Jobs." do
+    s_user = create(:user, email: "service@test.com")
+    c_user = create(:user, email: "consumer@test.com", user_type: 0)
+
+    visit "/"
+    login_user(c_user)
+    add_marriage
+    add_job
+    tags = "Flowers, Other"
+    themes = "Vintage, Sepia"
+    edit_job tags: tags, themes: themes
+    logout_user
+    visit "/"
+    login_user(s_user)
+    page.should have_content "Search Jobs by Theme"
+    fill_in "job_theme_terms", with: themes
+    click_on "Theme search"
+    page.should have_content "Job search results"
+    page.should have_content c_user.first_name
+    page.should have_content themes
+  end
+
 end

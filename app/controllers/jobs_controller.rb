@@ -41,6 +41,14 @@ class JobsController < ApplicationController
     end
   end
 
+  def theme_search
+    terms_array = theme_search_params[:theme_terms]
+      .split(",")
+      .collect(&:strip)
+    @jobs = Job.theme_search(terms_array)
+    render "search_results"
+  end
+
   def tag_search
     terms_array = tag_search_params[:tag_terms]
       .split(",")
@@ -68,6 +76,12 @@ class JobsController < ApplicationController
         "date(3i)",
         "date(2i)",
         "date(1i)")
+  end
+  def theme_search_params
+      params
+        .require(:job)
+        .permit(
+          :theme_terms)
   end
 
   def tag_search_params

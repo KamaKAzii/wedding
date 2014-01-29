@@ -10,6 +10,10 @@ class Job < ActiveRecord::Base
   pg_search_scope :job_keyword_search, against: [:title, :description],
     using: { tsearch: { dictionary: "english" }}
 
+  def self.theme_search(terms)
+    Job.tagged_with(terms, on: :themes, any: true)
+  end
+
   def self.tag_search(terms)
     Job.tagged_with(terms, any: true)
   end
