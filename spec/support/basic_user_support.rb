@@ -95,11 +95,13 @@ def add_job
   page.should have_content "Photographer needed"
 end
 
-def edit_job(tags)
+def edit_job(options = {})
   click_on "Edit job"
   page.should have_content "Edit job"
-  fill_in "Tags", with: tags
+  fill_in "Tags", with: options[:tags] if options[:tags]
+  fill_in "Themes", with: options[:themes] if options[:themes]
   click_on "Save job"
   page.should have_content "Successfully edited job"
-  page.should have_content tags
+  page.should have_content options[:tags] if options[:tags]
+  page.should have_content options[:themes] if options[:themes]
 end

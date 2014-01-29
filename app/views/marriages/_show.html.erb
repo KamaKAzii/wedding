@@ -43,6 +43,7 @@
             <%= j.application_due_date %>
             <%= j.description %>
             <%= j.tag_list.join ", " %>
+            <%= j.theme_list.join ", " %>
             <%= link_to "Edit job", edit_marriage_job_path(marriage.id, j.id) %>
           <% end %>
         </dd>

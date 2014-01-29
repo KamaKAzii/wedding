@@ -64,6 +64,7 @@ class JobsController < ApplicationController
         :title,
         :description,
         :tag_list,
+        :theme_list,
         "date(3i)",
         "date(2i)",
         "date(1i)")

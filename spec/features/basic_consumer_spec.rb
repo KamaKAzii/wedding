@@ -55,13 +55,13 @@ feature "Basic consumers" do
     page.should have_content "potentialpartner@blergh.com has been invited via email"
   end
 
-  # PT ID 64217898
-  scenario "As a Consumer I want to be able to add Tags to my Jobs." do
+  # PT ID 64217898, 64720866
+  scenario "As a Consumer I want to be able to add Tags and Themes to my Jobs." do
     user = create(:user, user_type: 0)
     login_user(user)
     add_marriage
     add_job
-    edit_job("Attire, Dress")
+    edit_job tags: "Attire, Dress", themes: "Vintage, Blue"
   end
 
 end
