@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
   
   def new
-    @marriage = Marriage.find(params[:marriage_id])
+    @marriage = Marriage.joins(:user).where(["user_id = ?", current_user.id]).last
     @event = Event.new
   end
 
   def create
-    @marriage = Marriage.find(params[:marriage_id])
+    @marriage = Marriage.joins(:user).where(["user_id = ?", current_user.id]).last
     @event = Event.new(event_params)
     @event.marriage = @marriage
     if @event.save

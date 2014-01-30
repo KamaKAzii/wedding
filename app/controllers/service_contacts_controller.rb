@@ -1,12 +1,12 @@
 class ServiceContactsController < ApplicationController
   
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @service_contact = ServiceContact.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @service_contact = ServiceContact.new(sc_params)
     @user.service_contact = @service_contact
     if @service_contact.save
@@ -18,12 +18,12 @@ class ServiceContactsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = current_user
     @service_contact = @user.service_contact
   end
 
   def update
-    @service_contact = ServiceContact.find(params[:id])
+    @service_contact = current_resource
     if @service_contact.update(sc_params)
       flash.notice = "Successfully edited contact details"
       redirect_to user_path(params[:user_id])
@@ -33,6 +33,10 @@ class ServiceContactsController < ApplicationController
   end
 
   private
+
+  def current_resource
+    @current_resource = ServiceContact.find(params[:id]) if params[:id]
+  end
 
   def sc_params
     params  

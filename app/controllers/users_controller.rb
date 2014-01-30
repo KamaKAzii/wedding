@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  skip_filter :authorised?, only: [:new, :create]
-
   def new
     @user = User.new
   end
@@ -18,10 +16,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_resource
   end
 
   private
+
+  def current_resource
+    @current_resource = User.find(params[:id]) if params[:id]
+  end
 
   def user_params
     params

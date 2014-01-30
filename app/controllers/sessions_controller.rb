@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  skip_filter :authorised?
-
   def new
   end
 
@@ -19,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    current_permission = Permission.new(current_user)
     flash.notice = "Successfully logged out"
     redirect_to root_url
   end

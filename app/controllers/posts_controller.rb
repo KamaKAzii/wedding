@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = Post.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = Post.new(post_params)
     @post.date = Time.now
     @post.user = @user

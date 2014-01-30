@@ -3,19 +3,23 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :authorised?
+  before_filter :authorise
 
-  def authorise
-    if current_user.nil?
-      flash.alert = "Please sign in"
-      redirect_to login_url
-    end
+  def current_resource
+    nil
   end
 
   private
 
-  def authorised?
-    redirect_to new_session_path unless session[:user_id]
+
+  def current_permission
+    @current_permission ||= Permission.new(current_user)
+  end
+
+  def authorise
+    if !current_permission.allow?(params[:controller], params[:action], current_resource)
+      redirect_to new_session_path
+    end
   end
 
   def current_user

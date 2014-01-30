@@ -1,39 +1,43 @@
 class MarriagesController < ApplicationController
   
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @marriage = Marriage.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @marriage = Marriage.new(marriage_params)
     @marriage.couple = Couple.new
-    @user.marriage = @marriage
+    @marriage.user = @user
     if @marriage.save
       flash.notice = "Successfully added marriage"
-      redirect_to user_path(params[:user_id])
+      redirect_to user_path(current_user.id)
     else
       render "new"
     end
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @marriage = @user.marriage
+    @user = current_user
+    @marriage = current_resource
   end
 
   def update
-    @user = User.find(params[:user_id])
-    if @user.marriage.update(marriage_params)
+    @marriage = current_resource
+    if @marriage.update(marriage_params)
       flash.notice = "Successfully edited marriage"
-      redirect_to user_path(params[:user_id])
+      redirect_to user_path(current_user.id)
     else
       render "edit"
     end
   end
   
   private
+
+  def current_resource
+    @current_resource = Marriage.find(params[:id]) if params[:id]
+  end
 
   def marriage_params
     params

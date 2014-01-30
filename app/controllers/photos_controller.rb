@@ -1,12 +1,12 @@
 class PhotosController < ApplicationController
   
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @photo = Photo.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @photo = Photo.new(photo_params)
     @photo.user = @user
     if @photo.save

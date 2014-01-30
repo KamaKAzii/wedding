@@ -132,11 +132,11 @@ feature "Basic visitors" do
     page.should have_content "That email has been taken"
   end
 
-  # PT ID 64721052
-  scenario "As a Developer I want to limit access to anything that isn't the home page without login." do
+  # PT ID 64721052, 64815656
+  scenario "As a Developer I want to limit access via an authorisation class." do
     user = create(:user)
     visit "/users/#{user.id}"
     page.should have_content "Log in"
   end
-
+  
 end 

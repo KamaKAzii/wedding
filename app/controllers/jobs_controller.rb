@@ -1,12 +1,12 @@
 class JobsController < ApplicationController
   
   def new
-    @marriage = Marriage.find(params[:marriage_id])
+    @marriage = Marriage.joins(:user).where(["user_id = ?", current_user.id]).last
     @job = Job.new
   end
 
   def create
-    @marriage = Marriage.find(params[:marriage_id])
+    @marriage = Marriage.joins(:user).where(["user_id = ?", current_user.id]).last
     @job = Job.new(job_params)
     @job.marriage = @marriage
     if @job.save
@@ -22,13 +22,12 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @marriage = Marriage.find(params[:marriage_id])
-    @job = Job.find(params[:id])
+    @marriage = Marriage.joins(:user).where(["user_id = ?", current_user.id]).last
+    @job = current_resource
   end
 
   def update
-    @marriage = Marriage.find(params[:marriage_id])
-    @job = Job.find(params[:id])
+    @job = current_resource
     if @job.update(job_params)
       flash.notice = "Successfully edited job"
       if current_user
@@ -64,6 +63,10 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def current_resource
+    @current_resource = Job.find(params[:id]) if params[:id]
+  end
 
   def job_params
     params

@@ -1,12 +1,12 @@
 class InvitesController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @invite = Invite.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @invite = Invite.new(invite_params)
     if @invite.save
       InviteMailer.invite_email(@user.id, @invite.email)

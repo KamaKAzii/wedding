@@ -1,12 +1,12 @@
 class AppointmentsController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @appointment = Appointment.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @appointment = Appointment.new(appointment_params)
     @appointment.user = @user
     if @appointment.save
@@ -18,13 +18,12 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @appointment = Appointment.find(params[:id])
+    @user = current_user
+    @appointment = current_resource
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_resource
     if @appointment.update(appointment_params)
       flash.notice = "Successfully edited appointment" 
       redirect_to user_path(params[:user_id])
@@ -34,6 +33,10 @@ class AppointmentsController < ApplicationController
   end
 
   private
+
+  def current_resource
+    @current_resource = Appointment.find(params[:id]) if params[:id]
+  end
 
   def appointment_params
     params

@@ -6,6 +6,7 @@ FactoryGirl.define do
     password "abcd1234"
     password_confirmation "abcd1234"
     user_type 1
+    plan nil
 
     consumer_contact
   end
