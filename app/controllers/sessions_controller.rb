@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  skip_filter :authorised?
+
   def new
   end
 

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_filter :authorised?, only: [:new, :create]
+
   def new
     @user = User.new
   end
